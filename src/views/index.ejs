@@ -1,15 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD NodeJS</title>
-    <!-- Bootstrap4 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-dark">
-        <a href="/" class="navbar-brand">CRUD + NodeJS + MongoDB</a>
-    </nav>
-</body>
-</html>
+<%- include("./partials/_header") %>
+
+<div class="container">
+    <div class="row">
+        <!-- Formulario -->
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="title" placeholder="Inserte un titulo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="description" cols="80" class="form-control" placeholder="Inserte una descripción"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Lista -->
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let size = tasks.length; %>
+                    <% for (let i = 0; i < size; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= tasks[i].title %></td>
+                            <td><%= tasks[i].description %></td>
+                            <td>
+                                <a href="" class="btn btn-dark">Done</a>
+                                <a href="" class="btn btn-danger">Delete</a>
+                                <a href="" class="btn btn-info">Edit</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include("./partials/_footer") %>

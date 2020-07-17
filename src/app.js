@@ -19,7 +19,6 @@ mongoose.connect('mongodb://localhost/crud-mongo')
 
 /**importing routes from index.js file*/
 const indexRoutes = require('./routes/index');
-const { EPERM } = require('constants');
 
 /**Settings -  Levantar nuestro server en el puerto definido por el host o en su defecto usar el 3000 */
 app.set('port', process.env.PORT || 3000);
@@ -37,4 +36,3 @@ app.use('/', indexRoutes);
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);
 });
-

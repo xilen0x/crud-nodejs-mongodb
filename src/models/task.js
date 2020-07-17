@@ -2,7 +2,7 @@
  * Esquema de base de datos
  */
 const mongoose = require('mongoose');
-mongoose.Schema; 
+const Schema = mongoose.Schema; 
 
 const TaskSchema = new Schema({
     title: String,
