@@ -2,7 +2,7 @@
  * Simple aplicación CRUD con express y mongodb.
  * jsdoc para la documentación.
  */
-/**author Carlos Astorga */
+/**author Fazt - Adaptación y mejoras : Carlos Astorga */
 
 /**description - Importación de express e instanciarlo (y otros)*/
 const path = require('path');
