@@ -37,7 +37,7 @@ router.get('/switch/:id', async (req, res) => {
     
 });
 
-router.post('/edit/:id', async (req, res) => {
+router.post('/update/:id', async (req, res) => {
     const { id } = req.params;
     await Task.update({_id: id}, req.body);
     res.redirect('/');

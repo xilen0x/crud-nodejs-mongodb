@@ -6,7 +6,7 @@
         <div class="col-md-5 offset-md-3">
             <div class="card">
                 <div class="card-body">
-                    <form action="/edit/<%= task._id %>" method="POST">
+                    <form action="/update/<%= task._id %>" method="POST">
                         <div class="form-group">
                             <input type="text" name="title" placeholder="Inserte un titulo" class="form-control"
                             value="<%= task.title %>">
