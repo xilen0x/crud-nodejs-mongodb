@@ -7,6 +7,7 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const helmet = require('helmet');
 const mongoose = require('mongoose');
 
 const app = express();
@@ -25,11 +26,27 @@ app.set('views', path.join(__dirname, 'views'));// con ayuda del modulo path, le
 app.set('view engine', 'ejs');// motor de plantillas ejs
 
 /**middlewares */
+app.use(helmet({
+    contentSecurityPolicy: {
+        directives: {
+            defaultSrc: ["'self'"],
+            // Bootstrap is served from the CDN; inline styles are used in the views.
+            styleSrc: ["'self'", 'https://stackpath.bootstrapcdn.com', "'unsafe-inline'"],
+            scriptSrc: ["'self'"]
+        }
+    }
+}));
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));//modulo q me permite entender y guardar datos enviados por el formulario html
 
 /**my routes */
 app.use('/', indexRoutes);
+
+/**centralized error handler - avoids leaking stack traces and keeps the process alive */
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+});
 
 /**starting the server */
 app.listen(app.get('port'), () => {

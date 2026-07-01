@@ -50,8 +50,12 @@
                                     <td><%= tasks[i].title %></td>
                                     <td><%= tasks[i].description %></td>
                                     <td>
-                                        <a href="/switch/<%= tasks[i]._id %>" class="<%= tasks[i].status ? 'btn btn-success btn-block btn-sm' : 'btn btn-light btn-block btn-sm' %>">Realizado</a>
-                                        <a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger btn-block btn-sm"> Eliminar </a>
+                                        <form action="/switch/<%= tasks[i]._id %>" method="POST" class="d-inline">
+                                            <button type="submit" class="<%= tasks[i].status ? 'btn btn-success btn-block btn-sm' : 'btn btn-light btn-block btn-sm' %>">Realizado</button>
+                                        </form>
+                                        <form action="/delete/<%= tasks[i]._id %>" method="POST" class="d-inline">
+                                            <button type="submit" class="btn btn-danger btn-block btn-sm">Eliminar</button>
+                                        </form>
                                         <a href="/edit/<%= tasks[i]._id %>" class="btn btn-warning btn-block btn-sm">Editar</a>
                                     </td>
                                 </tr>
